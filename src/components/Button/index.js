@@ -42,6 +42,8 @@ function Button({
     }
     const classes = cx('wrapper', {
         [className]: className,
+        to,
+        href,
         primary,
         outline,
         small,
