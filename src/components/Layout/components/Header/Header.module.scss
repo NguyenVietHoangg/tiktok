@@ -47,8 +47,6 @@
         border-color: rgba(22, 24, 35, 0.2);
     }
 }
-
-
 .clear,
 .loading {
     position: absolute;
@@ -91,4 +89,30 @@
     line-height: 20px;
     font-weight: 600;
     color: rgba(22, 24, 35, 0.5);
+}
+.actions {
+    width: 274px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.actions-name {
+    margin-right: 8px;
+}
+.actions-menu {
+    width: 20px;
+    height: 20px;
+}
+.actions {
+    width: 274px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.actions-name {
+    margin-right: 8px;
+}
+.actions-menu {
+    width: 20px;
+    height: 20px;
 }
