@@ -22,22 +22,36 @@ import { faKeyboard } from '@fortawesome/free-regular-svg-icons';
 
 const cx = classNames.bind(styles);
 
-
 const MENU_ITEM = [
     {
-        icon: <FontAwesomeIcon icon={faEarthAsia}/>,
+        icon: <FontAwesomeIcon icon={faEarthAsia} />,
         title: 'English',
+        children: {
+            title: 'Language',
+            data: [
+                {
+                    type: 'Language',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'Language',
+                    code: 'vi',
+                    title: 'Tiếng Việt ',
+                },
+            ],
+        },
     },
     {
-        icon: <FontAwesomeIcon icon={faCircleQuestion}/>,
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
         title: 'Feedback and help',
         to: '/feedback',
     },
     {
-        icon: <FontAwesomeIcon icon={faKeyboard}/>,
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
         title: 'Keyboard shortcuts',
-    }
-]
+    },
+];
 
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
@@ -47,6 +61,10 @@ function Header() {
             setSearchResult([]);
         }, 0);
     }, []);
+
+    const handleMenuChange = (menuitem) => {
+        console.log(menuitem);
+    };
 
     return (
         <header className={cx('wrapper')}>
@@ -104,9 +122,7 @@ function Header() {
                     <Button primary large>
                         Log in
                     </Button>
-                    <Menu 
-                        items= { MENU_ITEM}
-                    >
+                    <Menu items={MENU_ITEM} onChange={handleMenuChange}>
                         <div className={cx('more-btn')}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />
                         </div>
