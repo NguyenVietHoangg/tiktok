@@ -1,7 +1,7 @@
 import Home from '~/pages/Home';
 import Following from '~/pages/Following';
 import Upload from '~/pages/Upload';
-
+import Profiler from '~/pages/Profiler';
 import { HeaderOnly } from '~/components/Layout';
 const publicRoute = [
     {
@@ -16,6 +16,10 @@ const publicRoute = [
         path: '/upload',
         component: Upload,
         layout: HeaderOnly,
+    },
+    {
+        path: '/@:nick_name',
+        component: Profiler,
     },
 ];
 

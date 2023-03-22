@@ -19,6 +19,7 @@ const Image = forwardRef(
                 src={fallback || src}
                 {...props}
                 onError={handleError}
+                alt="anh bi loi"
             />
         );
     },
