@@ -1,22 +1,7 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCircleQuestion,
-    faCircleXmark,
-    faEarthAsia,
-    faEllipsisVertical,
-    faMagnifyingGlass,
-    faPlus,
-    faSpinner,
-    faPaperPlane,
-    faEnvelopeOpen,
-    faCoins,
-    faGear,
-    faUser,
-    faArrowRightFromBracket,
-} from '@fortawesome/free-solid-svg-icons';
-import { faKeyboard } from '@fortawesome/free-regular-svg-icons';
+import { faCircleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import HeadlessTippy from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
@@ -27,12 +12,29 @@ import images from '~/asset/images';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Popper/Menu';
+import {
+    UploadIcon,
+    AccountIcon,
+    CoinsIcon,
+    FeedbackIcon,
+    InboxIcon,
+    KeyboardIcon,
+    LanguageIcon,
+    LogoutIcon,
+    MenuIcon,
+    MessageIcon,
+    SearchIcon,
+    SettingIcon,
+    ClearIcon,
+    LoadIcon,
+} from '~/components/Icons';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 let currentUsers = true;
 const MENU_ITEM = [
     {
-        icon: <FontAwesomeIcon icon={faEarthAsia} />,
+        icon: <LanguageIcon />,
         title: 'English',
         children: {
             title: 'Language',
@@ -51,12 +53,12 @@ const MENU_ITEM = [
         },
     },
     {
-        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        icon: <FeedbackIcon />,
         title: 'Feedback and help',
         to: '/feedback',
     },
     {
-        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        icon: <KeyboardIcon />,
         title: 'Keyboard shortcuts',
     },
 ];
@@ -76,23 +78,23 @@ function Header() {
 
     const usersMenu = [
         {
-            icon: <FontAwesomeIcon icon={faUser} />,
+            icon: <AccountIcon />,
             title: 'View profile',
             to: '/feedback',
         },
         {
-            icon: <FontAwesomeIcon icon={faCoins} />,
+            icon: <CoinsIcon />,
             title: 'Get Coins',
             to: '/feedback',
         },
         {
-            icon: <FontAwesomeIcon icon={faGear} />,
+            icon: <SettingIcon />,
             title: 'Settings',
             to: '/feedback',
         },
         ...MENU_ITEM,
         {
-            icon: <FontAwesomeIcon icon={faArrowRightFromBracket} />,
+            icon: <LogoutIcon />,
             title: 'Logout',
             to: '/feedback',
             separate: true,
@@ -138,7 +140,7 @@ function Header() {
                             />
 
                             <button className={cx('search-btn')}>
-                                <FontAwesomeIcon icon={faMagnifyingGlass} />
+                                <SearchIcon width="1.9rem" height="1.9rem" />
                             </button>
                         </div>
                     </HeadlessTippy>
@@ -146,21 +148,20 @@ function Header() {
                 <div className={cx('actions')}>
                     {currentUsers ? (
                         <>
-                            <Button
-                                large
-                                text
-                                leftIcon={<FontAwesomeIcon icon={faPlus} />}
-                            >
+                            <Button large text leftIcon={<UploadIcon />}>
                                 Upload
                             </Button>
                             <Tippy content="Message" placement="bottom">
                                 <button className={cx('round-icon')}>
-                                    <FontAwesomeIcon icon={faPaperPlane} />
+                                    <MessageIcon
+                                        width="2.6rem"
+                                        height="2.6rem"
+                                    />
                                 </button>
                             </Tippy>
                             <Tippy content="Inbox" placement="bottom">
                                 <button className={cx('round-icon')}>
-                                    <FontAwesomeIcon icon={faEnvelopeOpen} />
+                                    <InboxIcon width="3.2rem" height="3.2rem" />
                                 </button>
                             </Tippy>
                             <Menu
@@ -168,23 +169,22 @@ function Header() {
                                 onChange={handleMenuChange}
                             >
                                 <button className={cx('round-icon')}>
-                                    <img
-                                        className={cx('users-avatar')}
+                                    <Image
                                         src={
                                             'https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/f90cc529e5bacc99b1459a81ab73ca87~c5_100x100.jpeg?x-expires=1679644800&x-signature=QzGACHEt69NMzw9gSIfY%2FRLlOr0%3D'
                                         }
+                                        className={cx('users-avatar')}
                                         alt={'NguyenVanA'}
+                                        fallback={
+                                            'https://fullstack.edu.vn/static/media/f8-icon.18cd71cfcfa33566a22b.png'
+                                        }
                                     />
                                 </button>
                             </Menu>
                         </>
                     ) : (
                         <>
-                            <Button
-                                large
-                                text
-                                leftIcon={<FontAwesomeIcon icon={faPlus} />}
-                            >
+                            <Button large text leftIcon={<UploadIcon />}>
                                 Upload
                             </Button>
                             <Button primary large>
@@ -192,9 +192,7 @@ function Header() {
                             </Button>
                             <Menu items={MENU_ITEM} onChange={handleMenuChange}>
                                 <div className={cx('more-btn')}>
-                                    <FontAwesomeIcon
-                                        icon={faEllipsisVertical}
-                                    />
+                                    <MenuIcon />
                                 </div>
                             </Menu>
                         </>
