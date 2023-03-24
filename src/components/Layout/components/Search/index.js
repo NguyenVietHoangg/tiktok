@@ -20,7 +20,15 @@ function Search() {
 
     const debounced = useDebounce(searchValue, 800);
     const inputRef = useRef();
+
     const handleHideResult = () => setShowResult(false);
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+        if (!searchValue.startsWith(' ') && searchValue.trim()) {
+            setSearchValue(searchValue);
+        }
+    };
+
     useEffect(() => {
         if (!debounced.trim()) {
             setSearchResult([]);
@@ -29,12 +37,12 @@ function Search() {
         const fetchApi = async () => {
             setLoading(true);
 
-            const result = await searchServices.search(debounced)
+            const result = await searchServices.search(debounced);
             setSearchResult(result);
 
             setLoading(false);
-        }
-        fetchApi()
+        };
+        fetchApi();
     }, [debounced]);
 
     return (
@@ -60,7 +68,7 @@ function Search() {
                     value={searchValue}
                     placeholder="Search accounts and videos"
                     spellCheck={false}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={handleChange}
                     onFocus={() => setShowResult(true)}
                 />
                 {!!searchValue && !loading && (
@@ -83,7 +91,10 @@ function Search() {
                     />
                 )}
 
-                <button className={cx('search-btn')}>
+                <button
+                    className={cx('search-btn')}
+                    onMouseDown={(e) => e.preventDefault()}
+                >
                     <SearchIcon width="1.9rem" height="1.9rem" />
                 </button>
             </div>

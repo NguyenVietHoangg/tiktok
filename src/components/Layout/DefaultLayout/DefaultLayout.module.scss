@@ -7,6 +7,8 @@
     width: var(--default-layout-width);
     display: flex;
     padding: 0 var(--default-layout-horizontal-space);
+    
+    margin-top: 60px;
 }
 .content {
     flex: 1;
