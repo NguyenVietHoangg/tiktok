@@ -1,8 +1,8 @@
-
 import classNames from 'classnames/bind';
 
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import { Link } from 'react-router-dom';
 
 import styles from './Header.module.scss';
 import images from '~/asset/images';
@@ -59,7 +59,6 @@ const MENU_ITEM = [
 ];
 
 function Header() {
-  
     const handleMenuChange = (menuitem) => {
         console.log(menuitem);
     };
@@ -91,7 +90,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <img src={images.logo} alt="Tiktok" />
+                <Link to="/" className={cx('logo-link')}>
+                    <img src={images.logo} alt="Tiktok" />
+                </Link>
                 <div className={cx('tippy')}>
                     {/* search */}
                     <Search />

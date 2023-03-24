@@ -18,7 +18,7 @@ const publicRoute = [
         layout: HeaderOnly,
     },
     {
-        path: '/@:nick_name',
+        path: '/@:nickname',
         component: Profiler,
     },
 ];
